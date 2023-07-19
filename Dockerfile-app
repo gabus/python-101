@@ -1,0 +1,11 @@
+FROM python:3.11
+
+WORKDIR /python-101
+
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+
+# copy is used when volumnes are not mounted. right now it's overwritten
+COPY . .
+
+CMD ["jurigged", "-v", "start.py"]
